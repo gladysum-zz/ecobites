@@ -12,6 +12,8 @@ var restaurantData = [{name:"kitchen", stars:4.7, location: "150 Ave"},{name:"ki
 
 export default class RestaurantList extends Component {
 
+
+
   state = {dataSource: restaurantData };
   constructor() {
     super();
@@ -51,7 +53,7 @@ export default class RestaurantList extends Component {
                       maxStars={5}
                       starSize={10}
                       rating={rowData.stars}
-                      selectedStar={(rating) => this.onStarRatingPress(rating)}
+                      
                     />
                   </View>
                   <View style={{flex:.3, marginLeft: 20}}>
