@@ -28,16 +28,16 @@ class App extends Component {
   render() {
     return (
     <Router>
-
-      <Scene key="root">
-        <Scene key="AddRating" component={AddRating} type="reset" title="Add Rating" titleStyle={{ fontSize: 20}} navigationBarStyle={{backgroundColor:"red"}}  />
-        <Scene key="RestaurantList" component={RestaurantList} type="reset" title="Search Restaurants" titleStyle={{ fontSize: 20}} navigationBarStyle={{backgroundColor:"red"}} renderBackButton={()=> <Icon name='menu' />}  />
-        <Scene key="RestaurantPage" component={RestaurantPage} type="reset" title="Restaurant" titleStyle={{ fontSize: 20}} navigationBarStyle={{backgroundColor:"white"}}  renderRightButton={()=> <TouchableOpacity onPress={Actions.AddRating}><Icon name='ios-add' /></TouchableOpacity>} onRight={()=>console.log("@@")} />
-
-      </Scene>
       <Scene key="Login">
         <Scene key="LoginPage" component={LoginPage}  title={"EcoBites"} titleStyle={{fontWeight:'bold', fontSize: 20, color: "white"}} navigationBarStyle={{backgroundColor:'rgba(52,52,52,0)',borderBottomWidth:0}} />
       </Scene>
+      <Scene key="root">
+        <Scene key="RestaurantList" component={RestaurantList} type="reset" title="Search Restaurants" titleStyle={{ fontSize: 20}} navigationBarStyle={{backgroundColor:"red"}} renderBackButton={()=> <Icon name='menu' />}  />
+        <Scene key="RestaurantPage" component={RestaurantPage} direction="vertical" title="Restaurant" titleStyle={{ fontSize: 20}} navigationBarStyle={{backgroundColor:"white"}}  renderRightButton={()=> <TouchableOpacity onPress={Actions.AddRating}><Icon name='ios-add' /></TouchableOpacity>}  />
+        <Scene key="AddRating" component={AddRating} direction="vertical" title="Add Rating" titleStyle={{ fontSize: 20}} navigationBarStyle={{backgroundColor:"red"}}  />
+
+      </Scene>
+
     </Router>
     );
   }
