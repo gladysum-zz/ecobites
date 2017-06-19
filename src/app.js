@@ -9,31 +9,31 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableOpacity
 } from 'react-native';
 import { Router, Scene, Actions } from 'react-native-router-flux';
-import { Icon } from 'native-base';
+import { Icon,Input } from 'native-base';
 
 import LoginPage from './components/LoginPage';
-import HomePage from './components/HomePage';
+import RestaurantList from './components/RestaurantList';
+import RestaurantPage from './components/RestaurantPage';
+import AddRating from './components/AddRating';
 
 
 
 class App extends Component {
-  renderNavBar(){
-    return (
-      <View style={{backgroundColor:"blue"}}>
-        <Text>Test</Text>
-      </View>
-    );
-  }
+
 
   render() {
     return (
     <Router>
 
       <Scene key="root">
-        <Scene key="HomePage" component={HomePage} type="reset" title="EcoBites" titleStyle={{fontWeight:'bold', fontSize: 20}} navigationBarStyle={{backgroundColor:"red"}} renderBackButton={()=> <Icon name='menu' />}  renderTitle={this.renderNavBar.bind(this)}/>
+        <Scene key="AddRating" component={AddRating} type="reset" title="Add Rating" titleStyle={{ fontSize: 20}} navigationBarStyle={{backgroundColor:"red"}}  />
+        <Scene key="RestaurantList" component={RestaurantList} type="reset" title="Search Restaurants" titleStyle={{ fontSize: 20}} navigationBarStyle={{backgroundColor:"red"}} renderBackButton={()=> <Icon name='menu' />}  />
+        <Scene key="RestaurantPage" component={RestaurantPage} type="reset" title="Restaurant" titleStyle={{ fontSize: 20}} navigationBarStyle={{backgroundColor:"white"}}  renderRightButton={()=> <TouchableOpacity onPress={Actions.AddRating}><Icon name='ios-add' /></TouchableOpacity>} onRight={()=>console.log("@@")} />
+
       </Scene>
       <Scene key="Login">
         <Scene key="LoginPage" component={LoginPage}  title={"EcoBites"} titleStyle={{fontWeight:'bold', fontSize: 20, color: "white"}} navigationBarStyle={{backgroundColor:'rgba(52,52,52,0)',borderBottomWidth:0}} />
