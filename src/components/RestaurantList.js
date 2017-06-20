@@ -56,7 +56,7 @@ export default class RestaurantList extends Component {
               <TouchableOpacity onPress={Actions.RestaurantPage}>
               <View style={{borderBottomWidth: .5, flexDirection:'row'}} >
 
-              <Image source={require(rowData.image)} style={{flex:.2, height: 50, margin: 10}}
+              <Image source={require('./img/im1.jpg')} style={{flex:.2, height: 50, margin: 10}}
               />
               <View style={{flex:.8, margin:10, flexDirection:'column'}}>
                 <View style={{flex:1}}>
