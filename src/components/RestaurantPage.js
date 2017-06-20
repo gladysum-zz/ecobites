@@ -1,9 +1,30 @@
 import React, { Component } from 'react';
-import {View, Text,StyleSheet, Image} from 'react-native';
+import {View, Text,StyleSheet, Image,ScrollView} from 'react-native';
+import {Button,Input, List,ListItem} from 'native-base';
+import PubNub from 'pubnub';
+
 
 var data = {name: "Udon West", location: "150 Ave", phone: "124-555-1111"};
+var pubnubData = [];
+
+const pubnub = new PubNub({
+    subscribeKey: "sub-c-a9aedd3a-550b-11e7-8ac6-0619f8945a4f",
+    publishKey: "pub-c-2a6d43bc-dfef-4729-ba92-a9c47259ceb6",
+    ssl: true
+})
+
+
+var channel = "restaurant";
+pubnub.subscribe({channels:[channel]});
 
 export default class RestaurantPage extends Component {
+  state = {dataSource: pubnubData };
+  constructor() {
+    super();
+
+
+  }
+
   testGET(){
     console.log("testing");
     fetch('https://api.foursquare.com/v2/venues/40a55d80f964a52020f31ee3?client_id=E4I2YF3S5DENC1Z52CT2TS5HHCHGY2ZSISMDPXZXAYSGIZDS&client_secret=DF233W3QNVPARPBOETGASUQGWHLIAHUUEHISC1UEUODDDTBK&v=20130815&ll=40.7,-74&query=sushi')
@@ -17,8 +38,37 @@ export default class RestaurantPage extends Component {
       });
   }
 
+  publishPubnub(){
+    pubnub.publish({
+      channel : "restaurant",
+      message : "test"
+    });
+  }
+  fetchPubnub(){
+    pubnub.history({ channel: 'restaurant',}, (status, response) => {
+      response.messages.forEach((msg)=>{
+        // console.log(msg);
+        if (typeof msg.entry === "string")
+          pubnubData.push(msg.entry);
+        else{
+          pubnubData.push(msg.entry.text);
+        }
+      });
+      this.setState({dataSource: pubnubData});
+      }
+    );
+  }
+
+  componentWillMount(){
+    this.fetchPubnub();
+
+  }
+
   render(){
     this.testGET();
+
+    console.log("pubnubData");
+    console.log(this.state.dataSource);
     return(
       <View>
         <View style={{marginTop:90, marginLeft: 20, flexDirection:'row'}}>
@@ -53,8 +103,33 @@ export default class RestaurantPage extends Component {
         <View style={{borderTopWidth: 0.5, marginLeft: 30, marginRight: 30}}>
           <Text style={{marginTop: 20, fontSize: 15 ,fontWeight:'bold'}}>Community</Text>
         </View>
+        <View style={{flexDirection:'row', justifyContent:"center", borderWidth: 2, marginLeft: 30, marginRight:30, borderRadius: 20}}>
+          <ScrollView  ref={ref => this.scrollView = ref} onContentSizeChange={(contentWidth, contentHeight)=>{ this.scrollView.scrollTo({y: contentHeight - 60, animated: true})}} style={{ height: 100,marginLeft: 30, marginRight:30}}>
+            <List dataArray={this.state.dataSource}
+                        renderRow={(item) =>
+                            <ListItem style={{flexDirection:'row'}}>
+                                <Image source={require('./img/avatar-large.png')}  style={{flex: 0.1,  width: 20, height:20}} />
+                                <View style={{flex:0.6}}>
+                                  <Text style={{textAlign:"right"}}>{item}</Text>
+                                </View>
+                            </ListItem>
+                        }>
+              </List>
+          </ScrollView>
+        </View>
+
       </View>
     );
   }
 
 }
+
+// Submit Button
+// <View style={{flexDirection:'row', justifyContent:"center", backgroundColor:"yellow",marginLeft: 30, marginRight:30}}>
+//   <Input  style={{color:"green", flex: 0.8, backgroundColor:"red"}}  label='comment'  onChangeText={comment => this.setState({ comment })}/>
+//   <Button style={{flex:0.3}} onPress={this.publishPubnub.bind(this)}>
+//     <Text>
+//       Submit
+//     </Text>
+//   </Button>
+// </View>
