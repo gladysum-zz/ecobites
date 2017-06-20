@@ -155,7 +155,7 @@ export default class LoginPage extends Component {
   render() {
 
     return (
-      <Image  source={require('./img/background.jpg')} style={{flex: 1, alignSelf: 'stretch',width: null}}>
+      <Image  source={require('./img/healthfood.png')} style={{flex: 1, alignSelf: 'stretch',width: null}}>
       <Container style={{}}>
         <Content style={{ marginTop: 90}}>
         <Card style={{margin: 30, borderRadius: 20, backgroundColor:'rgba(255,255,255,0.8)'}}>

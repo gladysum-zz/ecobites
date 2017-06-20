@@ -29,7 +29,7 @@ class App extends Component {
     return (
     <Router>
       <Scene key="Login">
-        <Scene key="LoginPage" component={LoginPage}  title={"EcoBites"} titleStyle={{fontWeight:'bold', fontSize: 20, color: "white"}} navigationBarStyle={{backgroundColor:'rgba(52,52,52,0)',borderBottomWidth:0}} />
+        <Scene key="LoginPage" component={LoginPage}  title={"EcoBites"} titleStyle={{fontWeight:'bold', fontSize: 30, color: "green"}} navigationBarStyle={{backgroundColor:'rgba(52,52,52,0)',borderBottomWidth:0}} />
       </Scene>
       <Scene key="root">
         <Scene key="RestaurantList" component={RestaurantList} type="reset" title="Search Restaurants" titleStyle={{ fontSize: 20}} navigationBarStyle={{backgroundColor:"red"}} renderBackButton={()=> <Icon name='menu' />}  />
