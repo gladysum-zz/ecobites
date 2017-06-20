@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {View, Text,StyleSheet, Image, TextInput} from 'react-native';
 import {Button} from 'native-base';
+import { Router, Scene, Actions } from 'react-native-router-flux';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
 
@@ -9,13 +10,17 @@ var data = {name: "Tacos Lokos 4ever", location: "120 Franklin St Brooklyn, NY 1
 export default class AddRating extends Component {
 
   submitAnswer(){
-      fetch('http://34.212.68.217:8080/insertComment?restaurant_id=462a6065f964a520d9451fe3&eco_ratings=YES&bio_ratings=NO&comment=Trash%20out%20on%20the%20street&comment_user=user2&time_stamp=2012-12-31%2011:30:45', {
+      var myAns = this.state.answer.replace(" ", "%20");
+      var myURL = "http://34.212.68.217:8080/insertComment?restaurant_id=462a6065f964a520d9451fe3&eco_ratings=YES&bio_ratings=NO&comment=" + myAns + "&comment_user=user2&time_stamp=2012-12-31%2011:30:45";
+
+     fetch(myURL, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         }
       })
+      Actions.pop();
     }
 
 
@@ -76,7 +81,7 @@ export default class AddRating extends Component {
           />
         </View>
         <View style={{flexDirection:'row', alignItems:'center', justifyContent:"center", flex:1,marginTop: 20}}>
-          <Button style={{justifyContent:"center",backgroundColor:"#1B0303",borderWidth:1.8, borderColor: 'white'}} onPress={this.submitAnswer.bind(this)}><Text style={{color:"white", fontSize:25}}>Submit</Text></Button>
+          <Button style={{justifyContent:"center",backgroundColor:"green",borderWidth:1.8, borderColor: 'white'}} onPress={this.submitAnswer.bind(this)}><Text style={{color:"white", fontSize:25}}>Submit</Text></Button>
         </View>
       </View>
     );
