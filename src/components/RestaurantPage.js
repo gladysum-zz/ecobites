@@ -34,9 +34,9 @@ export default class RestaurantPage extends Component {
         <View style={{borderTopWidth: 0.5, marginLeft: 30, marginRight: 30}}>
           <Text style={{marginTop: 20, fontSize: 15 ,fontWeight:'bold'}}>Eco-Ratings</Text>
         </View>
-        <View style={{flexDirection:'row', height: 30, marginTop: 10}}>
+        <View style={{flexDirection:'row', height: 50, marginTop: 10}}>
           <View style={{flex:0.6, marginLeft: 30}}>
-            <Text >Separate Bins?</Text>
+            <Text >Separate bins for recyclables, compostables and landfill waste?</Text>
           </View>
           <View style={{flex:0.4}}>
             <Text >5 out of 7</Text>

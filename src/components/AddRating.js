@@ -30,7 +30,7 @@ export default class AddRating extends Component {
         </View>
         <View style={{flexDirection:'row', height: 70}}>
           <View style={{flex:0.6, margin: 30}}>
-            <Text style={{fontSize:17}}>Separate Bins?</Text>
+            <Text style={{fontSize:17}}>Separate bins for recyclables, compostables and landfill waste?</Text>
           </View>
           <View style={{flex:0.4, margin: 30, marginBottom: 10, flexDirection:"row"}}>
             <RadioForm
