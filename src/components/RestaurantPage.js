@@ -4,7 +4,7 @@ import {Button,Input, List,ListItem} from 'native-base';
 import PubNub from 'pubnub';
 
 
-var data = {name: "Udon West", location: "150 Ave", phone: "124-555-1111"};
+var data = {name: "Tacos Lokos 4ever", location: "120 Franklin St Brooklyn, NY 11222", phone: "(646) 325-9567"};
 var pubnubData = [];
 
 const pubnub = new PubNub({
@@ -59,6 +59,7 @@ export default class RestaurantPage extends Component {
     );
   }
 
+
   componentWillMount(){
     this.fetchPubnub();
 
@@ -104,16 +105,16 @@ export default class RestaurantPage extends Component {
           <Text style={{marginTop: 20, fontSize: 15 ,fontWeight:'bold'}}>Community</Text>
         </View>
         <View style={{flexDirection:'row', justifyContent:"center", borderWidth: 2, marginLeft: 30, marginRight:30, borderRadius: 20}}>
-          <ScrollView  ref={ref => this.scrollView = ref} onContentSizeChange={(contentWidth, contentHeight)=>{ this.scrollView.scrollTo({y: contentHeight - 60, animated: true})}} style={{ height: 100,marginLeft: 30, marginRight:30}}>
+          <ScrollView  ref={ref => this.scrollView = ref} onContentSizeChange={(contentWidth, contentHeight)=>{ this.scrollView.scrollTo({y: contentHeight - 60, animated: true})}} style={{ height: 200,marginLeft: 20, marginRight:20}}>
             <List dataArray={this.state.dataSource}
-                        renderRow={(item) =>
-                            <ListItem style={{flexDirection:'row'}}>
-                                <Image source={require('./img/avatar-large.png')}  style={{flex: 0.1,  width: 20, height:20}} />
-                                <View style={{flex:0.6}}>
-                                  <Text style={{textAlign:"right"}}>{item}</Text>
-                                </View>
-                            </ListItem>
-                        }>
+              renderRow={(item) =>
+                  <ListItem style={{flexDirection:'row'}}>
+                      <Image source={require('./img/avatar-large.png')}  style={{flex: 0.1,  width: 20, height:20}} />
+                      <View style={{flex:0.6}}>
+                        <Text style={{textAlign:"right"}}>{item}</Text>
+                      </View>
+                  </ListItem>
+              }>
               </List>
           </ScrollView>
         </View>

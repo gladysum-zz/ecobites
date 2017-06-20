@@ -4,13 +4,20 @@ import {Button} from 'native-base';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
 
-var data = {name: "Udon West", location: "150 Ave", phone: "124-555-1111"};
+var data = {name: "Tacos Lokos 4ever", location: "120 Franklin St Brooklyn, NY 11222", phone: "(646) 325-9567"};
 
 export default class AddRating extends Component {
 
   submitAnswer(){
-    console.log("submitted");
-  }
+      fetch('http://34.212.68.217:8080/insertComment?restaurant_id=462a6065f964a520d9451fe3&eco_ratings=YES&bio_ratings=NO&comment=Trash%20out%20on%20the%20street&comment_user=user2&time_stamp=2012-12-31%2011:30:45', {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }
+      })
+    }
+
 
   render(){
     return(
@@ -28,7 +35,7 @@ export default class AddRating extends Component {
 
 
         </View>
-        <View style={{flexDirection:'row', height: 70}}>
+        <View style={{flexDirection:'row', height: 90}}>
           <View style={{flex:0.6, margin: 30}}>
             <Text style={{fontSize:17}}>Separate bins for recyclables, compostables and landfill waste?</Text>
           </View>
