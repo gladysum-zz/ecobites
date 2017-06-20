@@ -104,15 +104,15 @@ export default class LoginPage extends Component {
 
   renderLoginForm(){
     return(
-      <Card style={{margin: 5, backgroundColor:'rgba(52,52,52,0.8)'}}>
-        <CardItem style={{marginTop:20,height: 200, flexDirection:'column',backgroundColor:'rgba(52,52,52,0.8)'}}>
+      <Card style={{margin: 5, backgroundColor:'rgba(255,255,255,0.8)'}}>
+        <CardItem style={{marginTop:20,height: 200, flexDirection:'column',backgroundColor:'rgba(255,255,255,0.8)'}}>
           <InputGroup style={{flex:1}}>
               <Icon name='ios-person' />
-              <Input  style={{color:"white"}} placeholder='Email' label='Email' value={this.state.email} onChangeText={email => this.setState({ email })}/>
+              <Input  style={{color:"green"}} placeholder='Email' label='Email' value={this.state.email} onChangeText={email => this.setState({ email })}/>
           </InputGroup>
           <InputGroup style={{flex:1}}>
               <Icon name='ios-key' />
-              <Input style={{color:"white"}} secureTextEntry placeholder='Password' value={this.state.password} label='Password' onChangeText={password => this.setState({ password })}/>
+              <Input style={{color:"green"}} secureTextEntry placeholder='Password' value={this.state.password} label='Password' onChangeText={password => this.setState({ password })}/>
           </InputGroup>
           <View style={{flexDirection:'row', alignItems:'center', justifyContent:"center", flex:1, paddingTop: 10}}>
             {this.renderLoginButton()}
@@ -127,19 +127,19 @@ export default class LoginPage extends Component {
 
   renderSignUpForm(){
     return(
-      <Card style={{margin: 5, backgroundColor:'rgba(52,52,52,0.8)'}}>
-        <CardItem style={{flexDirection:'column', backgroundColor:'rgba(52,52,52,0.8)'}}>
+      <Card style={{margin: 5, backgroundColor:'rgba(255,255,255,0.8)'}}>
+        <CardItem style={{flexDirection:'column', backgroundColor:'rgba(255,255,255,0.8)'}}>
           <InputGroup style={{flex:1}}>
               <Icon name='ios-person-outline' />
-              <Input style={{color:"white"}} placeholder='Name' label='Name' value={this.state.name} onChangeText={name => this.setState({ name })}/>
+              <Input style={{color:"green"}} placeholder='Name' label='Name' value={this.state.name} onChangeText={name => this.setState({ name })}/>
           </InputGroup>
           <InputGroup style={{flex:1}}>
               <Icon name='ios-person' />
-              <Input style={{color:"white"}} placeholder='Email' label='Email' value={this.state.email} onChangeText={email => this.setState({ email })}/>
+              <Input style={{color:"green"}} placeholder='Email' label='Email' value={this.state.email} onChangeText={email => this.setState({ email })}/>
           </InputGroup>
           <InputGroup >
               <Icon name='ios-key' />
-              <Input style={{color:"white"}} secureTextEntry placeholder='Password' value={this.state.password} label='Password' onChangeText={password => this.setState({ password })}/>
+              <Input style={{color:"green"}} secureTextEntry placeholder='Password' value={this.state.password} label='Password' onChangeText={password => this.setState({ password })}/>
           </InputGroup>
           <View style={{flexDirection:'row', alignItems:'center', justifyContent:"center", flex:1, paddingTop: 10}}>
             {this.renderSignUpButton()}
@@ -158,8 +158,8 @@ export default class LoginPage extends Component {
       <Image  source={require('./img/background.jpg')} style={{flex: 1, alignSelf: 'stretch',width: null}}>
       <Container style={{}}>
         <Content style={{ marginTop: 90}}>
-        <Card style={{margin: 30, borderRadius: 20, backgroundColor:'rgba(52,52,52,0.8)'}}>
-        <ScrollableTabView tabBarActiveTextColor="#f49b42" tabBarInactiveTextColor="white" tabBarUnderlineStyle={{backgroundColor:"#f49b42"}}>
+        <Card style={{margin: 30, borderRadius: 20, backgroundColor:'rgba(255,255,255,0.8)'}}>
+        <ScrollableTabView tabBarActiveTextColor="green" tabBarInactiveTextColor="grey" tabBarUnderlineStyle={{backgroundColor:"green"}}>
           <View tabLabel='LOGIN' >
             {this.renderLoginForm()}
           </View>
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f49b42',
+    backgroundColor: 'white',
   },
   welcome: {
     fontSize: 20,
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
   },
   buttonStyle:{
     marginTop: 10,
-    backgroundColor:"#f49b42",
+    backgroundColor:"green",
     width: 220,
   },
   textError: {
